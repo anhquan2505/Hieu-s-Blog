@@ -23,7 +23,7 @@ const Card = ({ key, item, card, index }) => {
         }
         
         {/* <div className={styles.desc}/> */}
-        <Link href={`posts/${index}`} className={styles.link}>
+        <Link href={`/posts/${index}`} className={styles.link}>
           Read More
         </Link>
       </div>
