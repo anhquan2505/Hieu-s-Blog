@@ -22,7 +22,7 @@ const offset = 4
         {database.map((card,index)=>{
           if (index >= (pagination*offset) && index < (offset*pagination+offset)){
             return(
-              <Card key={card} index = {index} card = {card}></Card>
+              <Card  index = {index} card = {card} key={"card"+index}></Card>
             )
           }
           return null

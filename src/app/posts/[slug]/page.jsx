@@ -48,8 +48,8 @@ const SinglePage =  () => {
       </div>
       <div className={styles.content}>
         <div className={styles.post} >
-          {desc.map(section=>(
-            <div className={styles.description} key={section}>{section}</div>
+          {desc.map((section,index)=>(
+            <div className={styles.description} key={"section"+index} >{section}</div>
           ))}
         </div>
         <Menu />
