@@ -1,16 +1,34 @@
+"use client"
 import Menu from "@/components/Menu/Menu";
 import styles from "./singlePage.module.css";
 import Image from "next/image";
-import Comments from "@/components/comments/Comments";
+// import { useEffect } from "react";
+import { useParams } from 'next/navigation'
+import { useContext } from "react";
+import { DatabaseContext } from "@/context/DatabaseContext";
+
+// import Comments from "@/components/comments/Comments";
 
 
 
 const SinglePage =  () => {
+  let { slug } = useParams()
+  slug = parseInt(slug)
+  
+  // const  = router.params
+  console.log(slug);
+  const database = useContext(DatabaseContext)
+  console.log(database);
+  if (database.length == 0 && slug>= database.length && slug<0){
+    return (<div>Loading</div>)
+  }
+  
+  const {title,desc} = database[slug]
   return (
     <div className={styles.container}>
       <div className={styles.infoContainer}>
         <div className={styles.textContainer}>
-          <h1 className={styles.title}>Title</h1>
+          <h1 className={styles.title}>{title}</h1>
           <div className={styles.user}>
               <div className={styles.userImageContainer}>
                 <Image src="/logo.png" alt="Hello" fill className={styles.avatar} />
@@ -30,10 +48,10 @@ const SinglePage =  () => {
       </div>
       <div className={styles.content}>
         <div className={styles.post}>
-          <div className={styles.description}/>
-          <div className={styles.comment}>
-            {/* <Comments/> */}
-          </div>
+          {desc.map(section=>(
+            <div className={styles.description}>{section}</div>
+          ))}
+          
         </div>
         <Menu />
       </div>

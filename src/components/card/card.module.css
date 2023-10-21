@@ -33,8 +33,11 @@
 
 .desc {
   font-size: 18px;
+  /* line-clamp: 5; */
   font-weight: 300;
+  /* overflow: hidden; */
   color: var(--softTextColor);
+  
 }
 
 .link {

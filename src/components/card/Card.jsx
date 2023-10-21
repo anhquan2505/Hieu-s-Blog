@@ -1,8 +1,9 @@
+"use client"
 import Image from "next/image";
 import styles from "./card.module.css";
 import Link from "next/link";
 
-const Card = ({ key, item }) => {
+const Card = ({ key, item, card, index }) => {
   return (
     <div className={styles.container} key={key}>
       
@@ -15,17 +16,16 @@ const Card = ({ key, item }) => {
           </span>
           <span className={styles.category}>Culture</span>
         </div>
+        <h3>{card.title}</h3>
         <Link href={`/`}>
           <h1></h1>
         </Link>
-        <p className={styles.desc}>Lorem ipsum dolor sit amet, 
-        consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
-        et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
-        ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        Duis aute irure dolor in reprehenderit in voluptate velit esse c
-        illum dolore eu fugiat nulla pariatur. </p>
-        <div className={styles.desc}/>
-        <Link href={`/posts/page`} className={styles.link}>
+        {
+          card.desc.length>0 && <p className={styles.desc}>{card.desc[0].slice(0,250)} {card.desc[0].length>250?"...": null}</p>
+        }
+        
+        {/* <div className={styles.desc}/> */}
+        <Link href={`/posts/${index}`} className={styles.link}>
           Read More
         </Link>
       </div>

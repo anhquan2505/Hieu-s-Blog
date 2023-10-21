@@ -1,8 +1,13 @@
-import React from "react";
+"use client"
+import React, { useContext } from "react";
 import styles from "./featured.module.css";
 import Image from "next/image";
+import { DatabaseContext } from "@/context/DatabaseContext";
+import Link from "next/link";
 
 const Featured = () => {
+  const database = useContext(DatabaseContext)
+  let postIndex = 0
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>
@@ -13,14 +18,15 @@ const Featured = () => {
           <Image src="/p1.jpeg" alt="" fill className={styles.image} />
         </div>
         <div className={styles.textContainer}>
-          <h1 className={styles.postTitle}>Lorem ipsum dolor sit amet alim consectetur adipisicing elit.</h1>
-          <p className={styles.postDesc}>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Cupiditate, quam nisi magni ea laborum inventore voluptatum
-            laudantium repellat ducimus unde aspernatur fuga. Quo, accusantium
-            quisquam! Harum unde sit culpa debitis.
-          </p>
-          <button className={styles.button}>Read More</button>
+          <h1 className={styles.postTitle}>{database[0].title}</h1>
+
+          {
+            database[postIndex].desc.length > 0 && <p className={styles.postDesc}> {database[postIndex].desc[0].slice(0, 250)} {database[postIndex].desc[0].length > 250 ? "..." : null}</p>
+          }
+
+          <button className={styles.button}><Link href={`/posts/${postIndex}`} className={styles.link}>
+            Read More
+          </Link></button>
         </div>
       </div>
     </div>
