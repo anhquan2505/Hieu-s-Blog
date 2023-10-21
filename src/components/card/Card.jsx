@@ -12,9 +12,7 @@ const Card = ({ key, item, card, index }) => {
         </div>
       <div className={styles.textContainer}>
         <div className={styles.detail}>
-          <span className={styles.date}>15/10/2023
-          </span>
-          <span className={styles.category}>Culture</span>
+          <span className={styles.date}>15/10/2023</span>
         </div>
         <h3>{card.title}</h3>
         <Link href={`/`}>

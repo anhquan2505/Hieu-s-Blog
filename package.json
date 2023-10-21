@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "predeploy":"next build",
+    "deploy":"gh-pages -d build"
   },
   "dependencies": {
     "eslint": "8.48.0",
@@ -18,5 +20,8 @@
     "react-dom": "18.2.0",
     "react-quill": "^2.0.0",
     "swr": "^2.2.2"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.0.0"
   }
 }

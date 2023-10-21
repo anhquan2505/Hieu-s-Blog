@@ -47,11 +47,10 @@ const SinglePage =  () => {
         
       </div>
       <div className={styles.content}>
-        <div className={styles.post}>
+        <div className={styles.post} >
           {desc.map(section=>(
-            <div className={styles.description}>{section}</div>
+            <div className={styles.description} key={section}>{section}</div>
           ))}
-          
         </div>
         <Menu />
       </div>
